@@ -11,6 +11,11 @@ uv run manim -pql animated_derivatives_full.py VisualDerivativeRules
 uv run manim -pql DistributedSystemDiagram.py DistributedSystemDiagram
 ```
 
+## run DistributedSystemFullDiagram.py
+```
+uv run manim -pql DistributedSystemFullDiagram.py DistributedSystemFullDiagram
+```
+
 
 ## UV Commands
 
