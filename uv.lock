@@ -1,0 +1,19 @@
+version = 1
+revision = 1
+requires-python = ">=3.12"
+
+[manifest]
+members = [
+    "animated-architecture-diagram",
+    "venv",
+]
+
+[[package]]
+name = "animated-architecture-diagram"
+version = "0.1.0"
+source = { virtual = "." }
+
+[[package]]
+name = "venv"
+version = "0.1.0"
+source = { virtual = "venv" }
