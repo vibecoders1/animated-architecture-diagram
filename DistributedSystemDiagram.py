@@ -16,7 +16,7 @@ BOX_LIGHT_GREEN = "#C5E1A5"
 DB_BROWN = "#A1887F"
 
 
-class DistributedSystemDiagram(Scene):
+class DistributedSystemDiagram(MovingCameraScene):
     def construct(self):
         self.camera.background_color = BG_COLOR
         
@@ -120,6 +120,11 @@ class DistributedSystemDiagram(Scene):
 
         self.wait(1)
 
+        # Focus camera on Services layer
+        self.camera.frame.save_state()
+        self.play(self.camera.frame.animate.move_to(services_box.get_center()).scale(1.2), run_time=2)
+        self.wait(1)
+
         # --- Async Layer ---
         async_box = Rectangle(width=13, height=4.5, color=ASYNC_LAYER_COLOR, fill_opacity=1).next_to(services_box, DOWN, buff=0.75)
         async_title = Text("Async Layer", font_size=24, color=BLACK).set_z_index(1).align_to(async_box, UP).shift(UP*0.3 + LEFT*5.5)
@@ -179,6 +184,10 @@ class DistributedSystemDiagram(Scene):
         )
         self.wait(1)
 
+        # Focus camera on Async Layer
+        self.play(self.camera.frame.animate.move_to(async_box.get_center()).scale(1.8), run_time=1)
+        self.wait(1)
+
         # --- Infra Layer ---
         infra_title = Text("Infra", font_size=32, color=BLACK).next_to(async_box, DOWN, buff=1.0).align_to(async_box, LEFT).shift(LEFT*1)
         self.play(Write(infra_title))
@@ -236,5 +245,16 @@ class DistributedSystemDiagram(Scene):
             Create(arrow_kafka_to_log), Write(elk_text),
             Create(arrow_kafka_to_trace)
         )
-        
+        self.wait(1)
+
+        # Now kafka_db is defined and visible, so move the camera
+        self.play(self.camera.frame.animate.move_to(kafka_db.get_center()).scale(0.9), run_time=2)
+        self.wait(1)
+
+        # Final zoom out: fit all components, center between top and bottom
+        top_y = title.get_top()[1]
+        bottom_y = kafka_db.get_bottom()[1]
+        center_y = (top_y + bottom_y) / 2
+        center_point = ORIGIN + UP * center_y
+        self.play(self.camera.frame.animate.move_to(center_point).scale(1.7), run_time=2)
         self.wait(3)
