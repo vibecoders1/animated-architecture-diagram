@@ -3,8 +3,8 @@ from manim import *
 class CareerGrowthScene(MovingCameraScene):
     def construct(self):
         # Titles
-        title_good = Text("✅ Supportive IT Environment", font_size=28).to_edge(UP + LEFT)
-        title_bad = Text("❌ Unsupportive IT Environment", font_size=28).to_edge(UP + RIGHT)
+        title_good = Text("Supportive IT Environment", font_size=28).to_edge(UP + LEFT)
+        title_bad = Text("Unsupportive IT Environment", font_size=28).to_edge(UP + RIGHT)
 
         # Axes for both plots
         axes_good = Axes(
