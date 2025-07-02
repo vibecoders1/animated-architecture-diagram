@@ -78,6 +78,7 @@ class CareerGrowthScene(MovingCameraScene):
         self.play(Create(axes_good), Create(labels_good))
         self.play(Create(axes_bad), Create(labels_bad))
 
+        self.play(FadeIn(legend_good), FadeIn(legend_bad))
         self.play(
             Create(graph_growth_good),
             Create(graph_motivation_good),
@@ -86,5 +87,5 @@ class CareerGrowthScene(MovingCameraScene):
             run_time=10
         )
 
-        self.play(FadeIn(legend_good), FadeIn(legend_bad))
+        
         self.wait(2)
