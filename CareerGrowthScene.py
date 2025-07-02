@@ -27,10 +27,10 @@ class CareerGrowthScene(MovingCameraScene):
         labels_bad = axes_bad.get_axis_labels(x_label="Time", y_label="Level")
 
         # Generate values manually (simplified model)
-        t_vals = [x * 0.05 for x in range(201)]
+        t_vals = [x * 0.05 for x in range(180)]
         growth_good = [8*t for t in t_vals]
         motivation_good = [7*t for t in t_vals]
-        growth_bad = [5*t for t in t_vals]
+        growth_bad = [11*t - 0.8*t**2 for t in t_vals]
         motivation_bad = [5*t - 0.5*t**2 for t in t_vals]
 
         # Create plot lines
