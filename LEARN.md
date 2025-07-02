@@ -27,3 +27,10 @@ class DistributedSystemFullDiagram(Scene):
         title = Text("Distributed Microservices System Architecture", font_size=36).to_edge(UP)
         self.play(Write(title))
 ```        
+
+
+```
+# Move camera to show the whole async layer box
+        self.play(self.camera.frame.animate.move_to(async_box.get_center()).scale(1.8), run_time=1)
+
+```
